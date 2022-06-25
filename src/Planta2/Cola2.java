@@ -15,7 +15,6 @@ public class Cola2 {
     }
     
     //Métodos.
-    
     public Telefono2 getPFist() {
         return pFirst;
     }
@@ -50,29 +49,38 @@ public class Cola2 {
         size++;
     }
     
-    public Telefono2 Desencolar(){
-        Telefono2 ultimo = null;
-        if(!this.estaVacia()){
-            if(size > 1){
-                int contador = 1;
-                Telefono2 contador2 = pFirst;
-                while ((contador - 1) != size){
-                    contador2 = contador2.getPNext();
-                    contador ++;
-                }
-                ultimo = contador2.getPNext();
-                size --;
-                contador2.setPNext(null);
-                this.setPLast(contador2);
-                return (ultimo);
-            }else if (size == 1){
-                ultimo = pFirst;
+    public Telefono2 desencolar() {
+        Telefono2 nuevoNodo = null;
+        switch (this.size) {
+            case 0:
+                break;
+            case 1:
+                nuevoNodo = this.pFirst;
                 this.pFirst = null;
                 this.pLast = null;
                 this.size = 0;
-                return (ultimo);
-            }
+                break;
+            default:
+                nuevoNodo = this.pFirst;
+                pFirst = pFirst.getPNext();
+                size --;
+                break;
         }
-        return (ultimo);
-    } 
+        return nuevoNodo;
+    }
+    
+    public String imprimir(){
+        String string = "";
+        for (int i = 0; i < size; i++) {
+            Telefono2 nodo = this.desencolar();
+            nodo.setPNext(null);
+            if (i == 0) {
+                string = Integer.toString(nodo.getID());
+            }else{
+                string += "->" + Integer.toString(nodo.getID());
+            }
+            this.encolar(nodo);
+        }
+        return string;
+    }
 }
