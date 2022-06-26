@@ -69,33 +69,38 @@ public class IA2 {
             if (telefono1.getPrioridad() == 1){
                 Main.nivel11.encolar(telefono1);
                 
-                Inicio.cola11.setText(Main.nivel11.imprimir());
+                Inicio.cola11.setText(Main.nivel11.imprimir(1));
             }else if (telefono1.getPrioridad() == 2){
                 Main.nivel21.encolar(telefono1);
                 
-                Inicio.cola21.setText(Main.nivel21.imprimir());
+                Inicio.cola21.setText(Main.nivel21.imprimir(1));
             }else{
                 Main.nivel31.encolar(telefono1);
                 
-                Inicio.cola31.setText(Main.nivel31.imprimir());
+                Inicio.cola31.setText(Main.nivel31.imprimir(1));
             }
             //Segunda planta.
             if (telefono2.getPrioridad() == 1){
                 Main.nivel12.encolar(telefono2);
                 
-                Inicio.cola12.setText(Main.nivel12.imprimir());
+                Inicio.cola12.setText(Main.nivel12.imprimir(1));
             }else if (telefono2.getPrioridad() == 2){
                 Main.nivel22.encolar(telefono2);
                 
-                Inicio.cola22.setText(Main.nivel22.imprimir());
+                Inicio.cola22.setText(Main.nivel22.imprimir(1));
             }else{
                 Main.nivel32.encolar(telefono2);
                 
-                Inicio.cola32.setText(Main.nivel32.imprimir());
+                Inicio.cola32.setText(Main.nivel32.imprimir(1));
             }
         }else{
             Combates.evento.setText("Enviados a Refuerzo");
             Combates.ganador.setText("Ninguno");
+            
+            Main.refuerzo.encolar(telefono1);
+            Main.refuerzo.encolar(telefono2);
+            
+            Inicio.refuerzo.setText(Main.refuerzo.imprimir(2));
         }
         return(seleccionado);
     }

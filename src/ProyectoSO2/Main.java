@@ -42,6 +42,7 @@ public class Main {
         nivel32 = new Cola2();
         
         refuerzo = new Cola2();
+        
         administrador = new Administrador2();
         IA = new IA2();
         

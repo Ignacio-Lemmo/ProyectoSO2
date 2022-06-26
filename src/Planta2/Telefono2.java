@@ -8,15 +8,16 @@ public class Telefono2 {
     private int ID;
     private int contador;
     private int copas;
+    private int planta;
     
     //Constructor.
-    public Telefono2(int ID, int prioridad){
+    public Telefono2(int ID, int prioridad, int copas, int planta){
         this.ID = ID;
         this.prioridad = prioridad;
         this.contador = 0;
         this.pNext = null;
-        double copa = Math.random() * 1000;
-        this.copas = (int)copa;
+        this.copas = copas;
+        this.planta = planta;
     }
     
     //Métodos.
@@ -52,6 +53,10 @@ public class Telefono2 {
         return copas;
     }
     
+    public int getPlanta(){
+        return planta;
+    }
+    
     public void aumentar(){
         this.contador ++;
     }
@@ -59,4 +64,5 @@ public class Telefono2 {
     public void subir(){
         this.prioridad --;
     }
+    
 }

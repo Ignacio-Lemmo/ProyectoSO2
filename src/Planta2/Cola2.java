@@ -71,18 +71,32 @@ public class Cola2 {
         return nuevoNodo;
     }
     
-    public String imprimir(){
+    public String imprimir(int tipo){
         String string = "";
-        for (int i = 0; i < size; i++) {
-            Telefono2 nodo = this.desencolar();
-            nodo.setPNext(null);
-            if (i == 0) {
-                string = Integer.toString(nodo.getID());
-            }else{
-                string += "\n" + Integer.toString(nodo.getID());
-            }
-            this.encolar(nodo);
+        if (tipo == 1){
+            for (int i = 0; i < size; i++) {
+                Telefono2 telefono = this.desencolar();
+                telefono.setPNext(null);
+                if (i == 0) {
+                    string = "ID: " + Integer.toString(telefono.getID()) + ", Copas: " + Integer.toString(telefono.getCopas()) + ", Contador: " + Integer.toString(telefono.getContador());
+                }else{
+                    string += "\nID: " + Integer.toString(telefono.getID()) + ", Copas: " + Integer.toString(telefono.getCopas()) + ", Contador: " + Integer.toString(telefono.getContador());
+                }
+                this.encolar(telefono);
+                }
+        }else{
+            for (int i = 0; i < size; i++) {
+                Telefono2 telefono = this.desencolar();
+                telefono.setPNext(null);
+                if (i == 0) {
+                    string = "ID: " + Integer.toString(telefono.getID()) + ", Copas: " + Integer.toString(telefono.getCopas()) + ", Planta " + Integer.toString(telefono.getPlanta());
+                }else{
+                    string += "\nID: " + Integer.toString(telefono.getID()) + ", Copas: " + Integer.toString(telefono.getCopas()) + ", Planta " + Integer.toString(telefono.getPlanta());
+                }
+                this.encolar(telefono);
+                } 
         }
+        
         return string;
     }
     
@@ -117,6 +131,15 @@ public class Cola2 {
             Main.nivel22.encolar(telefono);
         }else{
             System.out.println("No Entra " + telefono.getPrioridad() + " " + telefono.getID() + " " + planta);
+        }
+    }
+    
+    public void actualizarRefuerzo(){
+        double random = Math.random() * 100;
+        Telefono2 seleccionado = null;
+        if(random <= 40){
+            seleccionado = this.desencolar();
+            this.reEncolar(seleccionado, seleccionado.getPlanta());
         }
     }
 }
