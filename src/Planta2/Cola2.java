@@ -100,16 +100,11 @@ public class Cola2 {
         return string;
     }
     
-    public void actualizar(int planta){
+    public void actualizar2(int planta){
         if(!this.estaVacia()){
             Telefono2 auxiliar = pFirst;
             if(pFirst.getContador() < 8){
                 pFirst.aumentar();
-            }else if(pFirst.getContador() >= 8){
-                pFirst.subir();
-                pFirst.setContador(0);
-                Telefono2 subido = this.desencolar();
-                this.reEncolar(subido, planta);
             }
             for (int i = 0; i < size; i++) {
                 if(auxiliar.getPNext() != null && auxiliar.getPNext().getContador() < 8){
@@ -117,18 +112,28 @@ public class Cola2 {
                 }
                 auxiliar = auxiliar.getPNext();  
             }
+            while(pFirst.getContador() >= 8){
+                pFirst.subir();
+                pFirst.setContador(0);
+                this.reEncolar(this.desencolar(), planta);
+            }
         }
     }
+    
     
     public static void reEncolar(Telefono2 telefono, int planta){
         if(telefono.getPrioridad() == 1 && planta == 1){
             Main.nivel11.encolar(telefono);
         }else if(telefono.getPrioridad() == 2 && planta == 1){
            Main.nivel21.encolar(telefono);
+        }else if(telefono.getPrioridad() == 3 && planta == 1){
+            Main.nivel31.encolar(telefono);
         }else if(telefono.getPrioridad() == 1 && planta == 2){
             Main.nivel12.encolar(telefono);
         }else if(telefono.getPrioridad() == 2 && planta == 2){
             Main.nivel22.encolar(telefono);
+        }else if(telefono.getPrioridad() == 3 && planta == 2){
+            Main.nivel32.encolar(telefono);
         }else{
             System.out.println("No Entra " + telefono.getPrioridad() + " " + telefono.getID() + " " + planta);
         }
@@ -137,7 +142,7 @@ public class Cola2 {
     public void actualizarRefuerzo(){
         double random = Math.random() * 100;
         Telefono2 seleccionado = null;
-        if(random <= 40){
+        if(random <= 40 && !this.estaVacia()){
             seleccionado = this.desencolar();
             this.reEncolar(seleccionado, seleccionado.getPlanta());
         }

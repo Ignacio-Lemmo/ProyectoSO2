@@ -230,6 +230,23 @@ public class Administrador2 {
         Inicio.cola22.setText(Main.nivel22.imprimir(1));
         Inicio.cola32.setText(Main.nivel32.imprimir(1));
         
-        Inicio.refuerzo.setText(Main.refuerzo.imprimir(2));
+        Inicio.refuerzo.setText(Main.refuerzo1.imprimir(2));
+        Inicio.refuerzo2.setText(Main.refuerzo2.imprimir(2));
     }
+    
+//    public void actualizarRefuerzo(){
+//        double random = Math.random() * 100;
+//        Telefono2 seleccionado = null;
+//        Telefono2 seleccionado2 = null;
+//        if(random <= 40){
+//            if(!Main.refuerzo1.estaVacia()){
+//                seleccionado = Main.refuerzo1.desencolar();
+//                Main.refuerzo1.reEncolar(seleccionado, seleccionado.getPlanta());
+//            }
+//            if(!Main.refuerzo2.estaVacia()){
+//                seleccionado2 = Main.refuerzo2.desencolar();
+//                Main.refuerzo2.reEncolar(seleccionado, seleccionado2.getPlanta());
+//            }
+//        }
+//    }
 }

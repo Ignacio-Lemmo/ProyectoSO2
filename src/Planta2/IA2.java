@@ -13,8 +13,11 @@ public class IA2 {
             //Alguno puede salir al mercado
             if (telefono1.getCopas() > telefono2.getCopas()){
                 Combates.evento.setText("Hay Ganador");
+                Inicio.evento.setText("Hay Ganador");
                 
                 seleccionado = telefono1;
+                
+                Main.mercado1 ++;
                 
                 int suma = Integer.parseInt(Inicio.mercado1.getText()) + 1;
                 Inicio.mercado1.setText(String.valueOf(suma));
@@ -25,8 +28,10 @@ public class IA2 {
                 Combates.ganador.setText("Planta1, ID: " + seleccionado.getID() + ", Número de Copas: " + seleccionado.getCopas());
             }else if (telefono1.getCopas() < telefono2.getCopas()){
                 Combates.evento.setText("Hay Ganador");
-                
+                Inicio.evento.setText("Hay Ganador");
                 seleccionado = telefono2;
+                
+                Main.mercado2 ++;
                 
                 int suma = Integer.parseInt(Inicio.mercado2.getText()) + 1;
                 Inicio.mercado2.setText(String.valueOf(suma));
@@ -38,9 +43,12 @@ public class IA2 {
             }else {
                 //Empate por copas.
                 Combates.evento.setText("Hay empate por Copas, se decidirá aleatoriamente");
+                Inicio.evento.setText("Hay empate por Copas");
                 if (random2 > 50){
                     seleccionado = telefono1;
 
+                    Main.mercado1 ++;
+                    
                     int suma = Integer.parseInt(Inicio.mercado1.getText()) + 1;
                     Inicio.mercado1.setText(String.valueOf(suma));
 
@@ -52,7 +60,9 @@ public class IA2 {
                     seleccionado = telefono2;
                     int suma = Integer.parseInt(Inicio.mercado2.getText()) + 1;
                     Inicio.mercado2.setText(String.valueOf(suma));
-
+                    
+                    Main.mercado2 ++;
+                    
                     int suma2 = Integer.parseInt(Inicio.desechados1.getText()) + 1;
                     Inicio.desechados1.setText(String.valueOf(suma)); 
 
@@ -64,6 +74,8 @@ public class IA2 {
             
             Combates.evento.setText("Hay Empate");
             Combates.ganador.setText("Ninguno");
+            Inicio.evento.setText("Hay empate");
+            
             
             //Primera planta.
             if (telefono1.getPrioridad() == 1){
@@ -96,11 +108,13 @@ public class IA2 {
         }else{
             Combates.evento.setText("Enviados a Refuerzo");
             Combates.ganador.setText("Ninguno");
+            Inicio.evento.setText("Enviados a Refuerzo");
             
-            Main.refuerzo.encolar(telefono1);
-            Main.refuerzo.encolar(telefono2);
+            Main.refuerzo1.encolar(telefono1);
+            Main.refuerzo2.encolar(telefono2);
             
-            Inicio.refuerzo.setText(Main.refuerzo.imprimir(2));
+            Inicio.refuerzo.setText(Main.refuerzo1.imprimir(2));
+            Inicio.refuerzo2.setText(Main.refuerzo2.imprimir(2));
         }
         return(seleccionado);
     }

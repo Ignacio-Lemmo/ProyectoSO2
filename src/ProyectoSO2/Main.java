@@ -22,7 +22,8 @@ public class Main {
     public static volatile Cola2 nivel22;
     public static volatile Cola2 nivel32;
     
-    public static volatile Cola2 refuerzo;
+    public static volatile Cola2 refuerzo1;
+    public static volatile Cola2 refuerzo2;
     
     public static volatile int telefonos = 0;
     
@@ -30,6 +31,10 @@ public class Main {
     public static IA2 IA;
     
     public static Combates combates;
+    
+    public static volatile int mercado1 = 0;
+    public static volatile int mercado2 = 0;
+    
     
     //Inicio.
     public static void main(String[] args) {        
@@ -41,7 +46,8 @@ public class Main {
         nivel22 = new Cola2();
         nivel32 = new Cola2();
         
-        refuerzo = new Cola2();
+        refuerzo1 = new Cola2();
+        refuerzo2= new Cola2();
         
         administrador = new Administrador2();
         IA = new IA2();
