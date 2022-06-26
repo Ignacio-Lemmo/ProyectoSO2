@@ -11,38 +11,44 @@ public class Simulacion2 extends Thread{
         Main.administrador.agregar();
         Main.administrador.agregar();
         Main.administrador.agregar();
+        Main.administrador.agregar();
+        Main.administrador.agregar();
+        Main.administrador.agregar();
+        Main.administrador.agregar();
+        Main.administrador.agregar();
+        
+        Administrador2.actualizarInterfaz();
         while(true){
-            for (int i = 0; i < 2; i++) {
+            try{
+//                for (int i = 0; i < 2; i++) {                
+                Administrador2.actualizarInterfaz();
+
                 Telefono2 telefono1 = Main.administrador.seleccionar(1);
                 Telefono2 telefono2 = Main.administrador.seleccionar(2);
-                System.out.println("Seleccionados");
-                Inicio.cola11.setText(Main.nivel11.imprimir());
-                Inicio.cola21.setText(Main.nivel21.imprimir());
-                Inicio.cola31.setText(Main.nivel31.imprimir());
+                
+                Administrador2.actualizarInterfaz();
+                
+                Main.nivel21.actualizar(1);
+                Main.nivel31.actualizar(1);
+                
+                Main.nivel22.actualizar(2);
+                Main.nivel32.actualizar(2);
+                
+                Administrador2.actualizarInterfaz();
 
-                Inicio.cola12.setText(Main.nivel12.imprimir());
-                Inicio.cola22.setText(Main.nivel22.imprimir());
-                Inicio.cola32.setText(Main.nivel32.imprimir());
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Simulacion2.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                Thread.sleep(3000);
+                
                 Telefono2 seleccionado = Main.IA.selector(telefono1, telefono2);
+                
+                Administrador2.actualizarInterfaz();
+                
+                Main.administrador.agregar();
+                
+                Administrador2.actualizarInterfaz();
+//            }
+            }catch(Exception e){
+                System.out.println("MEGA PEO");
             }
-            Main.administrador.agregar();
-            Main.administrador.agregar();
-            Main.administrador.agregar();
-            Main.administrador.agregar();
-            System.out.println("Agregados");
-            
-            Inicio.cola11.setText(Main.nivel11.imprimir());
-            Inicio.cola21.setText(Main.nivel21.imprimir());
-            Inicio.cola31.setText(Main.nivel31.imprimir());
-            
-            Inicio.cola12.setText(Main.nivel12.imprimir());
-            Inicio.cola22.setText(Main.nivel22.imprimir());
-            Inicio.cola32.setText(Main.nivel32.imprimir());
         }
     }
 }

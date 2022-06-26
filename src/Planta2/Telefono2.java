@@ -44,4 +44,12 @@ public class Telefono2 {
     public void setPrioridad(int prioridad) {
         this.prioridad = prioridad;
     }
+    
+    public void aumentar(){
+        this.contador ++;
+    }
+    
+    public void subir(){
+        this.prioridad --;
+    }
 }

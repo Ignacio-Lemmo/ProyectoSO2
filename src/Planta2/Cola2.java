@@ -1,5 +1,7 @@
 package Planta2;
 
+import ProyectoSO2.Main;
+
 public class Cola2 {
     
     //Declaración de atributos.
@@ -32,7 +34,7 @@ public class Cola2 {
     }
     
     public boolean estaVacia(){
-        if (pFirst == null && pLast == null){
+        if (pFirst == null){
             return true;
         }else{
             return false;
@@ -84,4 +86,23 @@ public class Cola2 {
         return string;
     }
     
+    public void actualizar(int planta){
+        if(!this.estaVacia()){
+            Telefono2 auxiliar = pFirst;
+            if(pFirst.getContador() < 8){
+                pFirst.aumentar();
+            }else if(pFirst.getContador() >= 8){
+                pFirst.subir();
+                pFirst.setContador(0);
+                Telefono2 subido = this.desencolar();
+                Administrador2.reEncolar(subido, planta);
+            }
+            for (int i = 0; i < size; i++) {
+                if(auxiliar.getPNext() != null && auxiliar.getPNext().getContador() < 8){
+                    auxiliar.getPNext().aumentar();
+                }
+                auxiliar = auxiliar.getPNext();  
+            }
+        }
+    }
 }

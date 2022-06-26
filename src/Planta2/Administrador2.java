@@ -24,25 +24,31 @@ public class Administrador2 {
                 Main.telefonos ++;
                 Main.nivel11.encolar(nuevo1);
                 
-                Inicio.ID1.setText(String.valueOf(Main.telefonos));
+                Inicio.ID1.setText(String.valueOf(nuevo1.getID()));
                 Inicio.prioridad1.setText("1");
+                
+                Inicio.cola11.setText(Main.nivel11.imprimir());
                 
             }else if(random21 >= 33){
                 nuevo1 = new Telefono2(Main.telefonos, 2);
                 Main.telefonos ++;
                 Main.nivel21.encolar(nuevo1);
                 
-                Inicio.ID1.setText(String.valueOf(Main.telefonos));
+                Inicio.ID1.setText(String.valueOf(nuevo1.getID()));
                 Inicio.prioridad1.setText("2");
+                
+                Inicio.cola21.setText(Main.nivel21.imprimir());
                 
             }else{
                 nuevo1 = new Telefono2(Main.telefonos, 3);
                 Main.telefonos ++;
                 Main.nivel31.encolar(nuevo1);
                 
-                Inicio.ID1.setText(String.valueOf(Main.telefonos));
+                Inicio.ID1.setText(String.valueOf(nuevo1.getID()));
                 Inicio.prioridad1.setText("3");
                 
+                Inicio.cola31.setText(Main.nivel31.imprimir());
+                
             }
             //Segunda Planta.
             if(random22 >= 66){
@@ -50,80 +56,97 @@ public class Administrador2 {
                 Main.telefonos ++;
                 Main.nivel12.encolar(nuevo2);
                 
-                Inicio.ID2.setText(String.valueOf(Main.telefonos));
+                Inicio.ID2.setText(String.valueOf(nuevo2.getID()));
                 Inicio.prioridad2.setText("1");
                 
-            }else if(random22 >= 33){
-                nuevo2 = new Telefono2(Main.telefonos, 2);
-                Main.telefonos ++;
-                Main.nivel22.encolar(nuevo1);
-                
-                Inicio.ID2.setText(String.valueOf(Main.telefonos));
-                Inicio.prioridad2.setText("2");
-                
-            }else{
-                nuevo2 = new Telefono2(Main.telefonos, 3);
-                Main.telefonos ++;
-                Main.nivel32.encolar(nuevo1);
-                
-                Inicio.ID2.setText(String.valueOf(Main.telefonos));
-                Inicio.prioridad2.setText("3");
-            }
-        }else{
-            //Primera Planta
-            if(random1 <= 70){
-               if(random21 >= 66){
-                    nuevo1 = new Telefono2(Main.telefonos, 1);
-                    Main.telefonos ++;
-                    Main.nivel11.encolar(nuevo1);
-                    
-                    Inicio.ID1.setText(String.valueOf(Main.telefonos));
-                    Inicio.prioridad1.setText("1");
-                    
-                }else if(random21 >= 33){
-                    nuevo1 = new Telefono2(Main.telefonos, 2);
-                    Main.telefonos ++;
-                    Main.nivel21.encolar(nuevo1);
-                    
-                    Inicio.ID1.setText(String.valueOf(Main.telefonos));
-                    Inicio.prioridad1.setText("2");         
-                    
-                }else{
-                    nuevo1 = new Telefono2(Main.telefonos, 3);
-                    Main.telefonos ++;
-                    Main.nivel31.encolar(nuevo1);
-                    
-                    Inicio.ID1.setText(String.valueOf(Main.telefonos));
-                    Inicio.prioridad1.setText("3");
-                    
-                } 
-            }
-            //Segunda Planta.
-            if(random22 >= 66){
-                nuevo2 = new Telefono2(Main.telefonos, 1);
-                Main.telefonos ++;
-                Main.nivel12.encolar(nuevo2);
-                
-                Inicio.ID2.setText(String.valueOf(Main.telefonos));
-                Inicio.prioridad2.setText("1");
+                Inicio.cola12.setText(Main.nivel12.imprimir());
                 
             }else if(random22 >= 33){
                 nuevo2 = new Telefono2(Main.telefonos, 2);
                 Main.telefonos ++;
                 Main.nivel22.encolar(nuevo2);
                 
-                Inicio.ID2.setText(String.valueOf(Main.telefonos));
+                Inicio.ID2.setText(String.valueOf(nuevo2.getID()));
                 Inicio.prioridad2.setText("2");
+                
+                Inicio.cola22.setText(Main.nivel22.imprimir());
                 
             }else{
                 nuevo2 = new Telefono2(Main.telefonos, 3);
                 Main.telefonos ++;
                 Main.nivel32.encolar(nuevo2);
                 
-                Inicio.ID2.setText(String.valueOf(Main.telefonos));
+                Inicio.ID2.setText(String.valueOf(nuevo2.getID()));
                 Inicio.prioridad2.setText("3");
                 
-            } 
+                Inicio.cola32.setText(Main.nivel32.imprimir());
+            }
+        }else{
+            if(random1 <= 70){
+               //Primera Planta.
+                if(random21 >= 66){
+                    nuevo1 = new Telefono2(Main.telefonos, 1);
+                    Main.telefonos ++;
+                    Main.nivel11.encolar(nuevo1);
+
+                    Inicio.ID1.setText(String.valueOf(nuevo1.getID()));
+                    Inicio.prioridad1.setText("1");
+
+                    Inicio.cola11.setText(Main.nivel11.imprimir());
+
+                }else if(random21 >= 33){
+                    nuevo1 = new Telefono2(Main.telefonos, 2);
+                    Main.telefonos ++;
+                    Main.nivel21.encolar(nuevo1);
+
+                    Inicio.ID1.setText(String.valueOf(nuevo1.getID()));
+                    Inicio.prioridad1.setText("2");
+
+                    Inicio.cola21.setText(Main.nivel21.imprimir());
+
+                }else{
+                    nuevo1 = new Telefono2(Main.telefonos, 3);
+                    Main.telefonos ++;
+                    Main.nivel31.encolar(nuevo1);
+
+                    Inicio.ID1.setText(String.valueOf(nuevo1.getID()));
+                    Inicio.prioridad1.setText("3");
+
+                    Inicio.cola31.setText(Main.nivel31.imprimir());
+
+                }
+                //Segunda Planta.
+                if(random22 >= 66){
+                    nuevo2 = new Telefono2(Main.telefonos, 1);
+                    Main.telefonos ++;
+                    Main.nivel12.encolar(nuevo2);
+
+                    Inicio.ID2.setText(String.valueOf(nuevo2.getID()));
+                    Inicio.prioridad2.setText("1");
+
+                    Inicio.cola12.setText(Main.nivel12.imprimir());
+
+                }else if(random22 >= 33){
+                    nuevo2 = new Telefono2(Main.telefonos, 2);
+                    Main.telefonos ++;
+                    Main.nivel22.encolar(nuevo2);
+
+                    Inicio.ID2.setText(String.valueOf(nuevo2.getID()));
+                    Inicio.prioridad2.setText("2");
+
+                    Inicio.cola22.setText(Main.nivel22.imprimir());
+
+                }else{
+                    nuevo2 = new Telefono2(Main.telefonos, 3);
+                    Main.telefonos ++;
+                    Main.nivel32.encolar(nuevo2);
+
+                    Inicio.ID2.setText(String.valueOf(nuevo2.getID()));
+                    Inicio.prioridad2.setText("3");
+
+                    Inicio.cola32.setText(Main.nivel32.imprimir());
+                } 
+            }
         }
     }
     
@@ -159,5 +182,33 @@ public class Administrador2 {
         }
         telefono.setContador(0);
         return (telefono);
+    }
+    
+    public static void reEncolar(Telefono2 telefono, int planta){
+        if(telefono.getPrioridad() == 1 && planta == 1){
+            Main.nivel11.encolar(telefono);
+            System.out.println("Entro" + telefono.getPrioridad());
+        }else if(telefono.getPrioridad() == 2 && planta == 1){
+           Main.nivel21.encolar(telefono);
+           System.out.println("Entro" + telefono.getPrioridad());
+        }else if(telefono.getPrioridad() == 1 && planta == 2){
+            Main.nivel12.encolar(telefono);
+            System.out.println("Entro" + telefono.getPrioridad());
+        }else if(telefono.getPrioridad() == 2 && planta == 2){
+            Main.nivel22.encolar(telefono);
+            System.out.println("Entro" + telefono.getPrioridad());
+        }else{
+            System.out.println("No Entra " + telefono.getPrioridad() + " " + telefono.getID() + " " + planta);
+        }
+    }
+    
+    public static void actualizarInterfaz(){
+        Inicio.cola11.setText(Main.nivel11.imprimir());
+        Inicio.cola21.setText(Main.nivel21.imprimir());
+        Inicio.cola31.setText(Main.nivel31.imprimir());
+
+        Inicio.cola12.setText(Main.nivel12.imprimir());
+        Inicio.cola22.setText(Main.nivel22.imprimir());
+        Inicio.cola32.setText(Main.nivel32.imprimir());
     }
 }
