@@ -77,10 +77,11 @@ public class Cola2 {
             if (i == 0) {
                 string = Integer.toString(nodo.getID());
             }else{
-                string += "->" + Integer.toString(nodo.getID());
+                string += "\n" + Integer.toString(nodo.getID());
             }
             this.encolar(nodo);
         }
         return string;
     }
+    
 }
