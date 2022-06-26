@@ -1,16 +1,19 @@
 package Planta2;
 
+import Interfaces.Combates;
 import Interfaces.Inicio;
 import ProyectoSO2.Main;
 
 public class IA2 {
     public Telefono2 selector(Telefono2 telefono1, Telefono2 telefono2){
         double random = Math.random() * 100;
-        double random2 = Math.random() *100;
+        double random2 = Math.random() * 100;
         Telefono2 seleccionado = null;
-        if (random >= 40){
-            //Alguno puede salir al mercado.
-            if (random2 >= 50){
+        if (random >= 60){
+            //Alguno puede salir al mercado
+            if (telefono1.getCopas() > telefono2.getCopas()){
+                Combates.evento.setText("Hay Ganador");
+                
                 seleccionado = telefono1;
                 
                 int suma = Integer.parseInt(Inicio.mercado1.getText()) + 1;
@@ -18,16 +21,50 @@ public class IA2 {
                 
                 int suma2 = Integer.parseInt(Inicio.desechados2.getText()) + 1;
                 Inicio.desechados2.setText(String.valueOf(suma));
-            }else{
+                
+                Combates.ganador.setText("Planta1, ID: " + seleccionado.getID() + ", Número de Copas: " + seleccionado.getCopas());
+            }else if (telefono1.getCopas() < telefono2.getCopas()){
+                Combates.evento.setText("Hay Ganador");
+                
                 seleccionado = telefono2;
+                
                 int suma = Integer.parseInt(Inicio.mercado2.getText()) + 1;
                 Inicio.mercado2.setText(String.valueOf(suma));
                 
                 int suma2 = Integer.parseInt(Inicio.desechados1.getText()) + 1;
-                Inicio.desechados1.setText(String.valueOf(suma));              
+                Inicio.desechados1.setText(String.valueOf(suma)); 
+                
+                Combates.ganador.setText("Planta2, ID: " + seleccionado.getID() + ", Número de Copas: " + seleccionado.getCopas());
+            }else {
+                //Empate por copas.
+                Combates.evento.setText("Hay empate por Copas, se decidirá aleatoriamente");
+                if (random2 > 50){
+                    seleccionado = telefono1;
+
+                    int suma = Integer.parseInt(Inicio.mercado1.getText()) + 1;
+                    Inicio.mercado1.setText(String.valueOf(suma));
+
+                    int suma2 = Integer.parseInt(Inicio.desechados2.getText()) + 1;
+                    Inicio.desechados2.setText(String.valueOf(suma));
+
+                    Combates.ganador.setText("Planta1, ID: " + seleccionado.getID() + ", Número de Copas: " + seleccionado.getCopas());
+                }else{
+                    seleccionado = telefono2;
+                    int suma = Integer.parseInt(Inicio.mercado2.getText()) + 1;
+                    Inicio.mercado2.setText(String.valueOf(suma));
+
+                    int suma2 = Integer.parseInt(Inicio.desechados1.getText()) + 1;
+                    Inicio.desechados1.setText(String.valueOf(suma)); 
+
+                    Combates.ganador.setText("Planta2, ID: " + seleccionado.getID() + ", Número de Copas: " + seleccionado.getCopas());
+                }
             }
-        }else if (random >=27 && random < 40){
+        }else if (random <=27){
             //Empate.
+            
+            Combates.evento.setText("Hay Empate");
+            Combates.ganador.setText("Ninguno");
+            
             //Primera planta.
             if (telefono1.getPrioridad() == 1){
                 Main.nivel11.encolar(telefono1);
@@ -57,7 +94,8 @@ public class IA2 {
                 Inicio.cola32.setText(Main.nivel32.imprimir());
             }
         }else{
-            //Alguno requiere refuerzo.
+            Combates.evento.setText("Enviados a Refuerzo");
+            Combates.ganador.setText("Ninguno");
         }
         return(seleccionado);
     }

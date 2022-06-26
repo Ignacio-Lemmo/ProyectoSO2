@@ -1,5 +1,6 @@
 package ProyectoSO2;
 
+import Interfaces.Combates;
 import Interfaces.Inicio;
 import Planta2.Administrador2;
 import Planta2.Cola2;
@@ -28,6 +29,8 @@ public class Main {
     public static Administrador2 administrador;
     public static IA2 IA;
     
+    public static Combates combates;
+    
     //Inicio.
     public static void main(String[] args) {        
         nivel11 = new Cola2();
@@ -45,6 +48,10 @@ public class Main {
         Inicio interfaz = new Inicio();
         interfaz.setLocationRelativeTo(null);
         interfaz.setVisible(true);
+        
+        combates = new Combates();
+        combates.setLocationRelativeTo(null);
+        combates.setVisible(false);
         
         Simulacion2 simulacion = new Simulacion2();
         simulacion.start();

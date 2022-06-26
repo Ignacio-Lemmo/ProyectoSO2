@@ -1,5 +1,6 @@
 package Planta2;
 
+import Interfaces.Combates;
 import Interfaces.Inicio;
 import ProyectoSO2.Main;
 
@@ -26,6 +27,7 @@ public class Administrador2 {
                 
                 Inicio.ID1.setText(String.valueOf(nuevo1.getID()));
                 Inicio.prioridad1.setText("1");
+                Inicio.copas1.setText(String.valueOf(nuevo1.getCopas()));
                 
                 Inicio.cola11.setText(Main.nivel11.imprimir());
                 
@@ -36,6 +38,7 @@ public class Administrador2 {
                 
                 Inicio.ID1.setText(String.valueOf(nuevo1.getID()));
                 Inicio.prioridad1.setText("2");
+                Inicio.copas1.setText(String.valueOf(nuevo1.getCopas()));
                 
                 Inicio.cola21.setText(Main.nivel21.imprimir());
                 
@@ -46,6 +49,7 @@ public class Administrador2 {
                 
                 Inicio.ID1.setText(String.valueOf(nuevo1.getID()));
                 Inicio.prioridad1.setText("3");
+                Inicio.copas1.setText(String.valueOf(nuevo1.getCopas()));
                 
                 Inicio.cola31.setText(Main.nivel31.imprimir());
                 
@@ -58,6 +62,7 @@ public class Administrador2 {
                 
                 Inicio.ID2.setText(String.valueOf(nuevo2.getID()));
                 Inicio.prioridad2.setText("1");
+                Inicio.copas2.setText(String.valueOf(nuevo2.getCopas()));
                 
                 Inicio.cola12.setText(Main.nivel12.imprimir());
                 
@@ -68,6 +73,7 @@ public class Administrador2 {
                 
                 Inicio.ID2.setText(String.valueOf(nuevo2.getID()));
                 Inicio.prioridad2.setText("2");
+                Inicio.copas2.setText(String.valueOf(nuevo2.getCopas()));
                 
                 Inicio.cola22.setText(Main.nivel22.imprimir());
                 
@@ -78,6 +84,7 @@ public class Administrador2 {
                 
                 Inicio.ID2.setText(String.valueOf(nuevo2.getID()));
                 Inicio.prioridad2.setText("3");
+                Inicio.copas2.setText(String.valueOf(nuevo2.getCopas()));
                 
                 Inicio.cola32.setText(Main.nivel32.imprimir());
             }
@@ -158,48 +165,54 @@ public class Administrador2 {
     public Telefono2 seleccionar(int planta){
         Telefono2 telefono = null;
         if (planta == 1){
+            //Planta 1.
             if (!Main.nivel11.estaVacia()){
                //Verificar cola de nivel 1. 
                telefono = Main.nivel11.desencolar();
+               
+               Combates.ID1.setText(String.valueOf(telefono.getID()));
+               Combates.prioridad1.setText(String.valueOf(telefono.getPrioridad()));
             }else if (!Main.nivel21.estaVacia()){
                 //Verificar cola de nivel 2.
                 telefono = Main.nivel21.desencolar();
+                
+                Combates.ID1.setText(String.valueOf(telefono.getID()));
+                Combates.prioridad1.setText(String.valueOf(telefono.getPrioridad()));
             }else if (!Main.nivel31.estaVacia()){
                 //Verificar cola de nivel 3.
                 telefono = Main.nivel31.desencolar();
+                
+                Combates.ID1.setText(String.valueOf(telefono.getID()));
+                Combates.prioridad1.setText(String.valueOf(telefono.getPrioridad()));
             }
         }else{
-          if (!Main.nivel12.estaVacia()){
+          //Planta 2.
+            if (!Main.nivel12.estaVacia()){
                //Verificar cola de nivel 1. 
                telefono = Main.nivel12.desencolar();
+               
+               Combates.ID2.setText(String.valueOf(telefono.getID()));
+               Combates.prioridad2.setText(String.valueOf(telefono.getPrioridad()));
             }else if (!Main.nivel22.estaVacia()){
                 //Verificar cola de nivel 2.
                 telefono = Main.nivel22.desencolar();
+                
+                Combates.ID2.setText(String.valueOf(telefono.getID()));
+                Combates.prioridad2.setText(String.valueOf(telefono.getPrioridad()));
             }else if (!Main.nivel32.estaVacia()){
                 //Verificar cola de nivel 3.
                 telefono = Main.nivel32.desencolar();
+                
+                Combates.ID2.setText(String.valueOf(telefono.getID()));
+                Combates.prioridad2.setText(String.valueOf(telefono.getPrioridad()));
             }  
         }
-        telefono.setContador(0);
-        return (telefono);
-    }
-    
-    public static void reEncolar(Telefono2 telefono, int planta){
-        if(telefono.getPrioridad() == 1 && planta == 1){
-            Main.nivel11.encolar(telefono);
-            System.out.println("Entro" + telefono.getPrioridad());
-        }else if(telefono.getPrioridad() == 2 && planta == 1){
-           Main.nivel21.encolar(telefono);
-           System.out.println("Entro" + telefono.getPrioridad());
-        }else if(telefono.getPrioridad() == 1 && planta == 2){
-            Main.nivel12.encolar(telefono);
-            System.out.println("Entro" + telefono.getPrioridad());
-        }else if(telefono.getPrioridad() == 2 && planta == 2){
-            Main.nivel22.encolar(telefono);
-            System.out.println("Entro" + telefono.getPrioridad());
-        }else{
-            System.out.println("No Entra " + telefono.getPrioridad() + " " + telefono.getID() + " " + planta);
+        try{
+            telefono.setContador(0);  
+        }catch(Exception e){
+            
         }
+        return (telefono);
     }
     
     public static void actualizarInterfaz(){

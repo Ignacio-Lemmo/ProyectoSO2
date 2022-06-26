@@ -7,6 +7,7 @@ public class Telefono2 {
     private int prioridad;
     private int ID;
     private int contador;
+    private int copas;
     
     //Constructor.
     public Telefono2(int ID, int prioridad){
@@ -14,6 +15,8 @@ public class Telefono2 {
         this.prioridad = prioridad;
         this.contador = 0;
         this.pNext = null;
+        double copa = Math.random() * 1000;
+        this.copas = (int)copa;
     }
     
     //Métodos.
@@ -43,6 +46,10 @@ public class Telefono2 {
 
     public void setPrioridad(int prioridad) {
         this.prioridad = prioridad;
+    }
+    
+    public int getCopas(){
+        return copas;
     }
     
     public void aumentar(){

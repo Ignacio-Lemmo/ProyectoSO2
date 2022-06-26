@@ -95,7 +95,7 @@ public class Cola2 {
                 pFirst.subir();
                 pFirst.setContador(0);
                 Telefono2 subido = this.desencolar();
-                Administrador2.reEncolar(subido, planta);
+                this.reEncolar(subido, planta);
             }
             for (int i = 0; i < size; i++) {
                 if(auxiliar.getPNext() != null && auxiliar.getPNext().getContador() < 8){
@@ -103,6 +103,20 @@ public class Cola2 {
                 }
                 auxiliar = auxiliar.getPNext();  
             }
+        }
+    }
+    
+    public static void reEncolar(Telefono2 telefono, int planta){
+        if(telefono.getPrioridad() == 1 && planta == 1){
+            Main.nivel11.encolar(telefono);
+        }else if(telefono.getPrioridad() == 2 && planta == 1){
+           Main.nivel21.encolar(telefono);
+        }else if(telefono.getPrioridad() == 1 && planta == 2){
+            Main.nivel12.encolar(telefono);
+        }else if(telefono.getPrioridad() == 2 && planta == 2){
+            Main.nivel22.encolar(telefono);
+        }else{
+            System.out.println("No Entra " + telefono.getPrioridad() + " " + telefono.getID() + " " + planta);
         }
     }
 }
