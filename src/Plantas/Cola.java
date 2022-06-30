@@ -1,35 +1,35 @@
-package Planta2;
+package Plantas;
 
 import ProyectoSO2.Main;
 
-public class Cola2 {
+public class Cola {
     
     //Declaración de atributos.
-    private Telefono2 pFirst;
-    private Telefono2 pLast;
+    private Telefono pFirst;
+    private Telefono pLast;
     private int size;
     
     //Constructor.
-    public Cola2(){
+    public Cola(){
         this.pFirst = null;
         this.pLast = null;
         this.size = 0;
     }
     
     //Métodos.
-    public Telefono2 getPFist() {
+    public Telefono getPFist() {
         return pFirst;
     }
     
-    public Telefono2 getPLast() {
+    public Telefono getPLast() {
         return pLast;
     }
     
-    public void setPFirst(Telefono2 pFirst) {
+    public void setPFirst(Telefono pFirst) {
         this.pFirst = pFirst;
     }
     
-    public void setPLast(Telefono2 pLast) {
+    public void setPLast(Telefono pLast) {
         this.pLast= pLast;
     }
     
@@ -41,7 +41,7 @@ public class Cola2 {
         }
     }
     
-    public void encolar(Telefono2 nuevo){
+    public void encolar(Telefono nuevo){
         if (this.estaVacia()) {
             this.pFirst = this.pLast= nuevo;
         } else {
@@ -51,8 +51,8 @@ public class Cola2 {
         size++;
     }
     
-    public Telefono2 desencolar() {
-        Telefono2 nuevoNodo = null;
+    public Telefono desencolar() {
+        Telefono nuevoNodo = null;
         switch (this.size) {
             case 0:
                 break;
@@ -75,7 +75,7 @@ public class Cola2 {
         String string = "";
         if (tipo == 1){
             for (int i = 0; i < size; i++) {
-                Telefono2 telefono = this.desencolar();
+                Telefono telefono = this.desencolar();
                 telefono.setPNext(null);
                 if (i == 0) {
                     string = "ID: " + Integer.toString(telefono.getID()) + ", Copas: " + Integer.toString(telefono.getCopas()) + ", Contador: " + Integer.toString(telefono.getContador());
@@ -86,12 +86,12 @@ public class Cola2 {
                 }
         }else{
             for (int i = 0; i < size; i++) {
-                Telefono2 telefono = this.desencolar();
+                Telefono telefono = this.desencolar();
                 telefono.setPNext(null);
                 if (i == 0) {
-                    string = "ID: " + Integer.toString(telefono.getID()) + ", Copas: " + Integer.toString(telefono.getCopas()) + ", Planta " + Integer.toString(telefono.getPlanta());
+                    string = "ID: " + Integer.toString(telefono.getID()) + ", Copas: " + Integer.toString(telefono.getCopas());
                 }else{
-                    string += "\nID: " + Integer.toString(telefono.getID()) + ", Copas: " + Integer.toString(telefono.getCopas()) + ", Planta " + Integer.toString(telefono.getPlanta());
+                    string += "\nID: " + Integer.toString(telefono.getID()) + ", Copas: " + Integer.toString(telefono.getCopas());
                 }
                 this.encolar(telefono);
                 } 
@@ -102,7 +102,7 @@ public class Cola2 {
     
     public void actualizar2(int planta){
         if(!this.estaVacia()){
-            Telefono2 auxiliar = pFirst;
+            Telefono auxiliar = pFirst;
             if(pFirst.getContador() < 8){
                 pFirst.aumentar();
             }
@@ -121,7 +121,7 @@ public class Cola2 {
     }
     
     
-    public static void reEncolar(Telefono2 telefono, int planta){
+    public static void reEncolar(Telefono telefono, int planta){
         if(telefono.getPrioridad() == 1 && planta == 1){
             Main.nivel11.encolar(telefono);
         }else if(telefono.getPrioridad() == 2 && planta == 1){
@@ -141,7 +141,7 @@ public class Cola2 {
     
     public void actualizarRefuerzo(){
         double random = Math.random() * 100;
-        Telefono2 seleccionado = null;
+        Telefono seleccionado = null;
         if(random <= 40 && !this.estaVacia()){
             seleccionado = this.desencolar();
             this.reEncolar(seleccionado, seleccionado.getPlanta());

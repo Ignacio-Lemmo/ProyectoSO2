@@ -1,6 +1,6 @@
 package ProyectoSO2;
 
-import Interfaces.Inicio;
+import Interfaces.Simulacion;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;

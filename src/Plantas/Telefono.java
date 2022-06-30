@@ -1,9 +1,9 @@
-package Planta2;
+package Plantas;
 
-public class Telefono2 {
+public class Telefono {
     
     //Declaración de atributos.
-    private Telefono2 pNext;
+    private Telefono pNext;
     private int prioridad;
     private int ID;
     private int contador;
@@ -11,7 +11,7 @@ public class Telefono2 {
     private int planta;
     
     //Constructor.
-    public Telefono2(int ID, int prioridad, int copas, int planta){
+    public Telefono(int ID, int prioridad, int copas, int planta){
         this.ID = ID;
         this.prioridad = prioridad;
         this.contador = 0;
@@ -21,11 +21,11 @@ public class Telefono2 {
     }
     
     //Métodos.
-    public Telefono2 getPNext(){
+    public Telefono getPNext(){
         return(pNext);
     }
     
-    public void setPNext(Telefono2 pNext) {
+    public void setPNext(Telefono pNext) {
         this.pNext = pNext;
     }
     
