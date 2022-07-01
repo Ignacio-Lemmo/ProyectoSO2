@@ -133,36 +133,38 @@ public class Administrador {
 
                 }
                 //Segunda Planta.
-                if(copas2 >= 3000){
-                    nuevo2 = new Telefono(Main.telefonos, 1, copas2, 2);
-                    Main.telefonos ++;
-                    Main.nivel12.encolar(nuevo2);
+                if (random2 <= 70){
+                    if(copas2 >= 3000){
+                        nuevo2 = new Telefono(Main.telefonos, 1, copas2, 2);
+                        Main.telefonos ++;
+                        Main.nivel12.encolar(nuevo2);
 
-                    Simulacion.ID2.setText(String.valueOf(nuevo2.getID()));
-                    Simulacion.prioridad2.setText("1");
+                        Simulacion.ID2.setText(String.valueOf(nuevo2.getID()));
+                        Simulacion.prioridad2.setText("1");
 
-                    Simulacion.cola12.setText(Main.nivel12.imprimir(1));
+                        Simulacion.cola12.setText(Main.nivel12.imprimir(1));
 
-                }else if(copas2 >= 2000){
-                    nuevo2 = new Telefono(Main.telefonos, 2, copas2, 2);
-                    Main.telefonos ++;
-                    Main.nivel22.encolar(nuevo2);
+                    }else if(copas2 >= 2000){
+                        nuevo2 = new Telefono(Main.telefonos, 2, copas2, 2);
+                        Main.telefonos ++;
+                        Main.nivel22.encolar(nuevo2);
 
-                    Simulacion.ID2.setText(String.valueOf(nuevo2.getID()));
-                    Simulacion.prioridad2.setText("2");
+                        Simulacion.ID2.setText(String.valueOf(nuevo2.getID()));
+                        Simulacion.prioridad2.setText("2");
 
-                    Simulacion.cola22.setText(Main.nivel22.imprimir(1));
+                        Simulacion.cola22.setText(Main.nivel22.imprimir(1));
 
-                }else{
-                    nuevo2 = new Telefono(Main.telefonos, 3,copas2, 2);
-                    Main.telefonos ++;
-                    Main.nivel32.encolar(nuevo2);
+                    }else{
+                        nuevo2 = new Telefono(Main.telefonos, 3,copas2, 2);
+                        Main.telefonos ++;
+                        Main.nivel32.encolar(nuevo2);
 
-                    Simulacion.ID2.setText(String.valueOf(nuevo2.getID()));
-                    Simulacion.prioridad2.setText("3");
+                        Simulacion.ID2.setText(String.valueOf(nuevo2.getID()));
+                        Simulacion.prioridad2.setText("3");
 
-                    Simulacion.cola32.setText(Main.nivel32.imprimir(1));
+                        Simulacion.cola32.setText(Main.nivel32.imprimir(1));
                 } 
+                }
             }
         }
     }
