@@ -24,11 +24,27 @@ public class Data extends javax.swing.JFrame {
         
         for (int i = 1; i < CSVEL.dataHistorica.length; i++) {
             corridas.addItem("Corrida: " + i);
+            try{
+                String[] semitotal = CSVEL.dataHistorica[i-1].split(",");
+
+                total1 += Integer.parseInt(semitotal[0]);
+                total2 += Integer.parseInt(semitotal[1]); 
+            }catch(Exception e){
+                System.out.println(e);
+            }
             
-//            String[] semitotal = CSVEL.dataHistorica[i].split(",");
-//            
-//            total1 += Integer.parseInt(semitotal[0]);
-//            total2 += Integer.parseInt(semitotal[1]);
+            int ganancias11 = total1 * 900;
+            int ganancias22 = total2 * 600;
+            
+            ganancias1.setText("$" + ganancias11);
+            ganancias2.setText("$" + ganancias22);
+            
+            if(ganancias11 > ganancias22){
+                conclusion.setText("   En la simulación, la Planta1 ha logrado\n   sacar " + total1 + " teléfonos al mercado, generando\n   una ganancia a la empresa de $" + ganancias11+ ",\n   en comparacion a los $"+ ganancias22 +" de la Planta2.\n   Teniendo eso en cuenta, se le recomienda\n   a la empresa hacer uso de la Planta1 \n   para maximizar sus ganancias.");
+            }else{
+                conclusion.setText("   En la simulación, la Planta2 ha logrado\n   sacar " + total2 + " teléfonos al mercado, generando\n   una ganancia a la empresa de $" + ganancias22+ ",\n   en comparacion a los $"+ ganancias11 +" de la Planta1.\n   Teniendo eso en cuenta, se le recomienda\n   a la empresa hacer uso de la Planta2 \n   para maximizar sus ganancias.");
+            }
+           
         }
         int index = corridas.getSelectedIndex();
         String[] data = CSVEL.dataHistorica[index].split(",");
@@ -39,11 +55,11 @@ public class Data extends javax.swing.JFrame {
         mercado1.setString(data[0]);
         mercado2.setString(data[1]);
         
-//        planta1.setValue(total1);
-//        planta2.setValue(total2);
-//        
-//        planta1.setString(String.valueOf(total1));
-//        planta2.setString(String.valueOf(total2));
+        planta1.setValue(total1);
+        planta2.setValue(total2);
+        
+        planta1.setString(String.valueOf(total1));
+        planta2.setString(String.valueOf(total2));
     }
 
     /**
@@ -68,8 +84,15 @@ public class Data extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         planta1 = new javax.swing.JProgressBar();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        conclusion = new javax.swing.JTextArea();
+        jLabel8 = new javax.swing.JLabel();
+        ganancias1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        ganancias2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         corridas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -105,7 +128,7 @@ public class Data extends javax.swing.JFrame {
         jLabel4.setText("Teléfonos en el mercado:");
 
         planta2.setBackground(new java.awt.Color(255, 255, 255));
-        planta2.setMaximum(20);
+        planta2.setMaximum(100);
         planta2.setStringPainted(true);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -121,8 +144,26 @@ public class Data extends javax.swing.JFrame {
         jLabel7.setText("Teléfonos totales en el mercado:");
 
         planta1.setBackground(new java.awt.Color(255, 255, 255));
-        planta1.setMaximum(20);
+        planta1.setMaximum(100);
         planta1.setStringPainted(true);
+
+        conclusion.setEditable(false);
+        conclusion.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        conclusion.setRows(5);
+        conclusion.setFocusable(false);
+        jScrollPane1.setViewportView(conclusion);
+
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel8.setText("Ganancias Totales:");
+
+        ganancias1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ganancias1.setText("15600");
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel10.setText("Ganancias Totales:");
+
+        ganancias2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ganancias2.setText("15600");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,37 +172,50 @@ public class Data extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(corridas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel22))
                             .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(mercado2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(mercado1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel22))
+                                    .addComponent(jLabel4)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(corridas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(mercado2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(mercado1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel7)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(planta1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(planta2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
+                                .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(planta2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(planta1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(ganancias1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ganancias2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,11 +242,21 @@ public class Data extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(planta1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(ganancias1))
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(planta2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(ganancias2))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,8 +309,12 @@ public class Data extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea conclusion;
     private javax.swing.JComboBox<String> corridas;
+    private javax.swing.JLabel ganancias1;
+    private javax.swing.JLabel ganancias2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
@@ -254,6 +322,8 @@ public class Data extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JProgressBar mercado1;
     private javax.swing.JProgressBar mercado2;
     private javax.swing.JProgressBar planta1;

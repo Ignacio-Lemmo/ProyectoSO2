@@ -17,11 +17,21 @@ public class Administrador {
         double random22 = (Math.random() * 10000)/3;
         Telefono nuevo1 = null;
         Telefono nuevo2 = null;
+        int menos1 = this.restarCopas(1);
+        int menos2 = this.restarCopas(2);
+        int copas1 = (int)random21 - menos1;
+        int copas2 = (int)random22 - menos2;
+        if(copas1 < 1){
+            copas1 = 0;
+        }
+        if(copas2 < 1){
+            copas2 = 0;
+        }
         
-        if(Main.telefonos == 0){
+        if(Main.iniciales != 0){
             //Primera Planta.
-            if(random21 >= 3000){
-                nuevo1 = new Telefono(Main.telefonos, 1, (int)random21, 1);
+            if(copas1 >= 3000){
+                nuevo1 = new Telefono(Main.telefonos, 1, copas1, 1);
                 Main.telefonos ++;
                 Main.nivel11.encolar(nuevo1);
                 
@@ -31,8 +41,8 @@ public class Administrador {
                 
                 Simulacion.cola11.setText(Main.nivel11.imprimir(1));
                 
-            }else if(random21 >= 2000){
-                nuevo1 = new Telefono(Main.telefonos, 2, (int)random21, 1);
+            }else if(copas1 >= 2000){
+                nuevo1 = new Telefono(Main.telefonos, 2, copas1, 1);
                 Main.telefonos ++;
                 Main.nivel21.encolar(nuevo1);
                 
@@ -43,7 +53,7 @@ public class Administrador {
                 Simulacion.cola21.setText(Main.nivel21.imprimir(1));
                 
             }else{
-                nuevo1 = new Telefono(Main.telefonos, 3, (int)random21, 1);
+                nuevo1 = new Telefono(Main.telefonos, 3, copas1, 1);
                 Main.telefonos ++;
                 Main.nivel31.encolar(nuevo1);
                 
@@ -55,8 +65,8 @@ public class Administrador {
                 
             }
             //Segunda Planta.
-            if(random22 >= 3000){
-                nuevo2 = new Telefono(Main.telefonos, 1, (int)random22, 2);
+            if(copas2 >= 3000){
+                nuevo2 = new Telefono(Main.telefonos, 1, copas2, 2);
                 Main.telefonos ++;
                 Main.nivel12.encolar(nuevo2);
                 
@@ -66,8 +76,8 @@ public class Administrador {
                 
                 Simulacion.cola12.setText(Main.nivel12.imprimir(1));
                 
-            }else if(random22 >= 2000){
-                nuevo2 = new Telefono(Main.telefonos, 2, (int)random22, 2);
+            }else if(copas2 >= 2000){
+                nuevo2 = new Telefono(Main.telefonos, 2, copas2, 2);
                 Main.telefonos ++;
                 Main.nivel22.encolar(nuevo2);
                 
@@ -78,7 +88,7 @@ public class Administrador {
                 Simulacion.cola22.setText(Main.nivel22.imprimir(1));
                 
             }else{
-                nuevo2 = new Telefono(Main.telefonos, 3, (int)random22, 2);
+                nuevo2 = new Telefono(Main.telefonos, 3, copas2, 2);
                 Main.telefonos ++;
                 Main.nivel32.encolar(nuevo2);
                 
@@ -91,8 +101,8 @@ public class Administrador {
         }else{
             if(random1 <= 70){
                //Primera Planta.
-                if(random21 >= 3000){
-                    nuevo1 = new Telefono(Main.telefonos, 1, (int)random21, 1);
+                if(copas1 >= 3000){
+                    nuevo1 = new Telefono(Main.telefonos, 1, copas1, 1);
                     Main.telefonos ++;
                     Main.nivel11.encolar(nuevo1);
 
@@ -101,8 +111,8 @@ public class Administrador {
 
                     Simulacion.cola11.setText(Main.nivel11.imprimir(1));
 
-                }else if(random21 >= 2000){
-                    nuevo1 = new Telefono(Main.telefonos, 2, (int)random21, 1);
+                }else if(copas1 >= 2000){
+                    nuevo1 = new Telefono(Main.telefonos, 2, copas1, 1);
                     Main.telefonos ++;
                     Main.nivel21.encolar(nuevo1);
 
@@ -112,7 +122,7 @@ public class Administrador {
                     Simulacion.cola21.setText(Main.nivel21.imprimir(1));
 
                 }else{
-                    nuevo1 = new Telefono(Main.telefonos, 3, (int)random21, 1);
+                    nuevo1 = new Telefono(Main.telefonos, 3, copas1, 1);
                     Main.telefonos ++;
                     Main.nivel31.encolar(nuevo1);
 
@@ -123,8 +133,8 @@ public class Administrador {
 
                 }
                 //Segunda Planta.
-                if(random22 >= 3000){
-                    nuevo2 = new Telefono(Main.telefonos, 1, (int)random22, 2);
+                if(copas2 >= 3000){
+                    nuevo2 = new Telefono(Main.telefonos, 1, copas2, 2);
                     Main.telefonos ++;
                     Main.nivel12.encolar(nuevo2);
 
@@ -133,8 +143,8 @@ public class Administrador {
 
                     Simulacion.cola12.setText(Main.nivel12.imprimir(1));
 
-                }else if(random22 >= 2000){
-                    nuevo2 = new Telefono(Main.telefonos, 2, (int)random22, 2);
+                }else if(copas2 >= 2000){
+                    nuevo2 = new Telefono(Main.telefonos, 2, copas2, 2);
                     Main.telefonos ++;
                     Main.nivel22.encolar(nuevo2);
 
@@ -144,7 +154,7 @@ public class Administrador {
                     Simulacion.cola22.setText(Main.nivel22.imprimir(1));
 
                 }else{
-                    nuevo2 = new Telefono(Main.telefonos, 3,(int)random22, 2);
+                    nuevo2 = new Telefono(Main.telefonos, 3,copas2, 2);
                     Main.telefonos ++;
                     Main.nivel32.encolar(nuevo2);
 
@@ -232,6 +242,62 @@ public class Administrador {
         
         Simulacion.refuerzo.setText(Main.refuerzo1.imprimir(2));
         Simulacion.refuerzo2.setText(Main.refuerzo2.imprimir(2));
+    }
+    
+    public static int restarCopas(int tipo){
+        double menos = 0;
+        if(tipo == 1){
+            double pantalla = Math.random() * 100;
+            double pin = Math.random() * 100;
+            
+            for (int i = 1; i < 4; i++) {
+                double boton = Math.random() * 100;
+                if(boton > 85){
+                    menos += 200;
+                }
+            }
+            
+            for (int i = 1; i < 3; i++) {
+                double camara = Math.random() * 100;
+                if(camara > 80){
+                    menos += 300;
+                }
+            }
+            
+            if(pin > 84){
+                menos += 200;
+            }
+            
+            if(pantalla > 75){
+                menos += 1000;
+            }
+        }else{
+            double pantalla = Math.random() * 100;
+            double pin = Math.random() * 100;
+            
+            for (int i = 1; i < 2; i++) {
+                double boton = Math.random() * 100;
+                if(boton > 85){
+                    menos += 200;
+                }
+            }
+            
+            for (int i = 1; i < 2; i++) {
+                double camara = Math.random() * 100;
+                if(camara > 80){
+                    menos += 300;
+                }
+            }
+            
+            if(pin > 84){
+                menos += 200;
+            }
+            
+            if(pantalla > 75){
+                menos += 1000;
+            }
+        }
+        return (int) menos;
     }
     
 //    public void actualizarRefuerzo(){

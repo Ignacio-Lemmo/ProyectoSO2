@@ -12,8 +12,9 @@ public class Simulaciones extends Thread{
         for (int i = 0; i < Main.iniciales; i++) {
             Main.administrador.agregar();
         }
+            Main.iniciales = 0;
             Administrador.actualizarInterfaz();
-        while(true){
+        while(Main.agregados == 0){
             try{
                 for (int i = 0; i < 2; i++) {     
                     if((!Main.nivel11.estaVacia() && (!Main.nivel12.estaVacia() || !Main.nivel22.estaVacia() || !Main.nivel32.estaVacia())) || (!Main.nivel21.estaVacia() && (!Main.nivel12.estaVacia() || !Main.nivel22.estaVacia() || !Main.nivel32.estaVacia())) || (!Main.nivel31.estaVacia() && (!Main.nivel12.estaVacia() || !Main.nivel22.estaVacia() || !Main.nivel32.estaVacia()))){

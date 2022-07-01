@@ -36,7 +36,6 @@ public class CSVEL {
             }
             csvLeer.close();
             dataHistorica = historicaUnida.split("break");
-            System.out.println(dataHistorica[0]);
         }catch(Exception e){
             System.out.println(e);
         }
