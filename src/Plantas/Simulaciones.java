@@ -47,7 +47,7 @@ public class Simulaciones extends Thread{
                         
                         Simulacion.estadoAI.setText("Esperando...");
                         
-                        Thread.sleep(3000);
+                        //Thread.sleep(3000);
                         
                         Simulacion.evento.setText("Esperando...");
 
